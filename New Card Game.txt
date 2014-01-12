@@ -1,0 +1,46 @@
+Card Values:
+Ace: 1
+Number Cards: the number corresponding with each card.
+Jack: 11
+Queen: 12
+King: 13
+
+Each side starts with 5 cards face down.
+Neither side may look at their cards.
+Each side can either flip one of their cards, or pick one from the deck.
+Note: You can only choose to either flip a card, or draw a card from the deck a total of 5 times.
+	ex: 3 flips, 2 draws.
+If they flip their card, then player's score is player's score + the card.
+If they choose one from the deck, then they get one card face down.
+Player wins by beating the other player in score.
+Bonus cards are added to deck that can either help the player, harm the other player, or harm the player.
+	Ex: Master Spark card subtracts 5 from other player's score.
+	Multiplier multiplies all points recieved by the player by 2.
+	Error 404 subtracts 4 from the player's score and 1 from all points recieved by the player.
+
+After the match, all cards are put back in the deck and the deck is reshuffled.
+
+Game Theory:
+
+Player1 draws a card.	Turn1
+Card count: 6
+Player2 flips a card.	Turn1
+Card count: 4
+The card was a 4
+Player2's score: 4
+Player1 flips a card.	Turn2
+Card count: 5
+The card was an ace.
+Player1's score: 1
+Player2 flips a card.	Turn2
+Card count 3
+The card was a King
+Player2's score: 17
+Player1 draws a card:	Turn3
+Card count 4
+The card was a 10
+Player1's score: 11
+Player2 draws a card	Turn3
+Card count: 4
+
+etc...
