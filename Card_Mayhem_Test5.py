@@ -1,22 +1,23 @@
 #################
 #Tyler Robbins	#
 #1/5/13		#
-#CardMayhemTest3#
+#CardMayhemTest5#
 #################
-##############################################################################
-#Possible final version. Will be used for testing advanced wild card systems.#
-##############################################################################
+#######################################
+#CardMayhem Test for Wild Card System.#
+#######################################
 
 print 'Initializing Card Mayhem', '.', '.', '.'
 
 import random
 import time
 import sys
-import pdb; 
+import pdb
 
 cardValues = [1,2,3,4,5,6,7,8,9,10,11,12,13]
 Cards = ['a', '2','3','4','5','6','7','8','9','10','j','q','k']
 Suits = ['hearts', 'spades', 'diamonds', 'clubs']
+Wild = ['Python', 'X2Multiplier', 'MasterSpark', 'AceTo11', 'DeckSwap']
 Deck = []
 playerDeck = []
 cpuDeck = []
@@ -37,11 +38,15 @@ def shuffle(): #makes main deck
 	print 'Making Deck'
 	newdeck = []
 	while len(newdeck) < 52: #makes card
-		tempDeck = (random.choice(Suits), random.choice(cardValues))
+		tempDeck = [random.choice(Suits), random.choice(cardValues)]
 
 		if tempDeck not in newdeck: #puts card in newdeck
 			newdeck += [tempDeck]
-
+	
+	tempDeck = random.choice(Wild)
+	
+	if tempDeck not in newdeck:
+		newdeck += [tempDeck]
 #	print 'Setting Wild Cards'
 
 #	while foo < 4:
@@ -192,10 +197,10 @@ def flipper(deck, message): #flips card in player hand
 
 def WMulti():
 	#X2Multiplier Wild Card
-	pass
+	playerScore = playerScore * 2
 
 def WMS():
-	#MasterSpark Wild Card
+	
 	pass
 
 def AT11():
