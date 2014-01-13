@@ -80,30 +80,30 @@ def flipper(deck, message): #flips card in player hand
 	"""tempGrab=flipper(playerDeck), tempGrab=flipper(cpuDeck), tempGrab=flipper(Deck)
 	playerDisplayed=tempGrab[0]
 	playerDeck=tempGrab[1]"""
-
-	print message,
-	time.sleep(0.33)
-	print ".",
-	time.sleep(0.33)
-	print ".",
-	time.sleep(0.34)
+	flipcheck, flipcheck1 = 1, 0
+	print message,;time.sleep(0.33)
+	print ".",;time.sleep(0.33)
+	print ".",;time.sleep(0.34)
 	print "."
 
 	tempHand = ()
 
 	try:
-		flipcheck = 1
 
 		while flipcheck == 1:
 			try:
+				print 'test1'
 				tempHand += (random.choice(deck)) #grab card from player/cpu hand
 				flipcheck = 0
+				print 'test2'
 
 			except(TypeError):
-				flipcheck1 = 0
+				print 'test'
 				flipcheck1 += 1
+				print 'test3'
 				if flipcheck1 == 5:
 					sys.exit(TypeError)
+					print 'test4'
 
 		if tempHand in deck:
 			deck.remove(tempHand) #removes tempHand from player/cpu hand
