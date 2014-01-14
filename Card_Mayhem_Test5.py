@@ -258,12 +258,18 @@ while restart: #loop to allow the player can restart the game
 					Deck.remove(choice)
 				elif choice not in Deck:
 					print "Could not find" + choice + "in Deck."
-			elif playerChoice == 'TurnReset':
-				print ">>>Resetting turns",
+			elif playerChoice == 'TURNRESET':
+				print ">>> Resetting turns",
 				time.sleep(.33);print ".",
 				time.sleep(.33);print ".",
 				time.sleep(.33);print ".",;time.sleep(.33)
-				playerNumTurn, cpuNumTurn = 5, 5
+				playerNumTurn, cpuNumTurn = 5, 5 #resets player/cpu turns to 5
+			elif playerChoice == 'TRACE':
+				print ">>> Beginning Debug Traceback",
+				time.sleep(.33);print ".",
+				time.sleep(.33);print ".",
+				time.sleep(.33);print ".",;time.sleep(.33)
+				pdb.set_trace() #begins traceback
 			else:
 				print "Please choose an item from the list!\n"
 
