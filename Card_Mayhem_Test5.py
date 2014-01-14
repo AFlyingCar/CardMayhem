@@ -106,12 +106,14 @@ def flipper(deck, message): #flips card in player hand
 	except(IndexError):
 		pass
 
-	print tempHand
-	print "The card was a " + str(tempHand[1]) + " of " + str(tempHand[0]) + "!\n"
+	if type(tempHand) == list:
+		print "The card was a " + str(tempHand[1]) + " of " + str(tempHand[0]) + "!\n"
 
-	tempHand = [tempHand]
+	else:
+		print "The card was the" + tempHand + " wild card!"
 
-	return [(tempHand), deck] #returns two values. use arrays to get correct values with tempGrab[]
+
+	return [[tempHand], deck] #returns two values. use arrays to get correct values with tempGrab[]
 
 def WMulti(score):
 	#X2Multiplier Wild Card
@@ -122,6 +124,7 @@ def WMulti(score):
 
 def WMS(score):
 	#MasterSpark Wild Card
+	#removes 10 from other player's score
 	print 'MasterSpark'
 	score -= 10
 	return score
@@ -148,20 +151,24 @@ def DeSw(deck):
 
 	tempDeck = []
 
-	while yesno:
+	while True:
+		
 		print "Type 'C' to swap your deck with the CPU Deck, and 'D' to pull new cards from the main Deck.\n"
 		swap = raw_input("(Note: Choosing 'D' will erase your Deck and put it back in the deck) ")
-		if swap == 'C':
+		swap = swap.upper()
+
+		if swap == 'C': #What to do if player chooses 'C'
 			tempDeck = cpuDeck
 			cpuDeck = playerDeck
 			playerDeck = cpuDeck
-			yesno = False
+			return False
 
-		elif swap == 'D':
+		elif swap == 'D': #What to do if player chooses 'D'
 			tempDeck = playerDeck
 			playerDeck = deck_maker(5, 'Rebuilding playerDeck')
 			Deck += tempDeck
 			Deck = random.shuffle(Deck)
+			
 			return deck
 
 while restart: #loop to allow the player can restart the game
@@ -180,28 +187,18 @@ while restart: #loop to allow the player can restart the game
 	cpuDeck = deck_maker(5, '',)
 
 	while playerNumTurn > 0 and cpuNumTurn > 0 and not finish: #main game loop
-		
-		#Calculates player and cpu scores
-		flipcheck = 1
+		flipcheck = 0
 
-#		if X2Multiplier not in playerDisplayed:
-#			temp = X2Multiplier.setTrue(False, 'enter')
-#		else:
-#			temp = X2Multiplier.setTrue(True, 'enter')
-
-		while flipcheck == 1:
+		while flipcheck < 5: #calculates player and cpu scores
+			#breaks out of loop if it catches an IndexError 5 times
 			try:
-#				if X2Multiplier.setTrue(temp, 'return'):
-#					playerScore = X2Multiplier.CMulti()
-
-#				else:
 				playerScore = sum(map(lambda x: x[1], playerDisplayed))
 				cpuScore = sum(map(lambda x: x[1], cpuDisplayed))
 
-				flipcheck = 0
+				flipcheck = 6
 
 			except(IndexError):
-				pass
+				flipcheck += 1
 
 		while playerTurn:
 			print "Your score is", str(playerScore), "and the other player's score is", str(cpuScore), "."
