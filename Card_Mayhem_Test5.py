@@ -81,29 +81,24 @@ def flipper(deck, message): #flips card in player hand
 	playerDisplayed=tempGrab[0]
 	playerDeck=tempGrab[1]"""
 	flipcheck, flipcheck1 = 1, 0
-	print message,;time.sleep(0.33)
-	print ".",;time.sleep(0.33)
-	print ".",;time.sleep(0.34)
-	print "."
+	tempHand = []
 
-	tempHand = ()
+	print message,
+	time.sleep(0.33);print ".",
+	time.sleep(0.33);print ".",
+	time.sleep(0.34);print "."
 
 	try:
-
 		while flipcheck == 1:
 			try:
-				print 'test1'
-				tempHand += (random.choice(deck)) #grab card from player/cpu hand
+				tempHand = random.choice(deck) #grab card from player/cpu hand
 				flipcheck = 0
-				print 'test2'
 
 			except(TypeError):
-				print 'test'
 				flipcheck1 += 1
-				print 'test3'
+
 				if flipcheck1 == 5:
 					sys.exit(TypeError)
-					print 'test4'
 
 		if tempHand in deck:
 			deck.remove(tempHand) #removes tempHand from player/cpu hand
@@ -111,105 +106,63 @@ def flipper(deck, message): #flips card in player hand
 	except(IndexError):
 		pass
 
+	print tempHand
 	print "The card was a " + str(tempHand[1]) + " of " + str(tempHand[0]) + "!\n"
 
 	tempHand = [tempHand]
 
 	return [(tempHand), deck] #returns two values. use arrays to get correct values with tempGrab[]
 
-#class Card():
-#	def setDeck(self, deck, deck2):
-		#gets deck for Wild Cards
-		#deck2 if needed. If not, insert ''
-#		pass
-
-#	def setTrue(self, yesno, mode):
-#		"""mode=return or mode=enter"""
-		#determines whether to run code for wild card
-#		if mode == 'return':
-#			return yesno
-#		elif mode == 'enter':
-#			pass
-#		else:
-#			print 'incorrect mode: line 120'
-
-#	def getTrue(self):
-#		return None
-
-#class CWild(Card):
-#	def CPython(self):
-#		pass
-
-#	def CMulti(self):
-		#Multiplies all points player recieves by 2
-#		if yesno:
-#			mkscore = sum(map(lambda x: x[1], deck))
-#			mkscore = mkscore * 2
-
-#		else:
-#			mkscore = sum(map(lambda x: x[1], deck))
-
-#		return mkscore
-
-#	def CMS(self, deck1):
-		#removes 10 points from other player's score
-#		if yesno:
-#			deck -= 10
-
-#			for MasterSpark in deck1:
-#				deck1.remove(MasterSpark)
-
-#			return [deck, deck1]
-
-#	def CAceTo11(self, deck):
-		#if True, changes all 1 cards to 11
-#		for item in test:
-#			if type(item) == tuple:
-#				if item[1] == 1:
-#					loc = test.index(item)
-#					x = list(item)
-#					x[1] = 11
-#					item = tuple(x)
-#					test[loc] = item
-
-#	def CDeckSwap(self, deck):
-#		while yesno:
-#			print "Type 'C' to swap your deck with the CPU Deck, and 'D' to pull new cards from the main Deck\n"
-#			swap = raw_input("(Note: Choosing 'D' will wipe your Deck.")
-#			if swap == 'C':
-#				tempDeck = cpuDeck
-#				cpuDeck = playerDeck
-#				playerDeck = cpuDeck
-#				yesno = False
-
-#			elif swap == 'D':
-#				tempDeck = deck
-#				deck = deck_maker()
-#				return deck
-
-#Python = CWild()
-#X2Multiplier = CWild()
-#MasterSpark = CWild()
-#Aceto11 = CWild()
-#DeckSwap = CWild()
-
-#Wild = [Python, X2Multiplier, MasterSpark, Aceto11, DeckSwap]
-
-def WMulti():
+def WMulti(score):
 	#X2Multiplier Wild Card
-	playerScore = playerScore * 2
+	#'score' is playerScore or cpuScore
+	print 'X2Multiplier'
+	score = score * 2
+	return score
 
-def WMS():
-	
-	pass
+def WMS(score):
+	#MasterSpark Wild Card
+	print 'MasterSpark'
+	score -= 10
+	return score
 
-def AT11():
+def AT11(deck):
 	#AceTo11 Wild Card
-	pass
+	#changes all 1's to 11's in user's deck
+	print 'Ace to 11'
+	
+	for item in deck:
+		if item[1] == 1:
 
-def DeSw():
+			loc = deck.index(item)
+			item[1] = 11
+			deck[loc] = list(item)
+
+	return deck
+
+def DeSw(deck):
 	#DeckSwap Wild Card
-	pass
+	#allows the player to swap their deck with the cpu
+	#CPU will not be able to use this card
+	print 'DeckSwap'
+
+	tempDeck = []
+
+	while yesno:
+		print "Type 'C' to swap your deck with the CPU Deck, and 'D' to pull new cards from the main Deck.\n"
+		swap = raw_input("(Note: Choosing 'D' will erase your Deck and put it back in the deck) ")
+		if swap == 'C':
+			tempDeck = cpuDeck
+			cpuDeck = playerDeck
+			playerDeck = cpuDeck
+			yesno = False
+
+		elif swap == 'D':
+			tempDeck = playerDeck
+			playerDeck = deck_maker(5, 'Rebuilding playerDeck')
+			Deck += tempDeck
+			Deck = random.shuffle(Deck)
+			return deck
 
 while restart: #loop to allow the player can restart the game
 	playerTurn, cpuTurn = True, True
@@ -218,7 +171,6 @@ while restart: #loop to allow the player can restart the game
 	cpuScore = 0
 	playerChoice = ''
 	cpuChoice = 0
-#	X2Multiplier.setTrue(False, 'enter')
 	playerDisplayed = []
 	cpuDisplayed = []
 
