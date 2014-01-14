@@ -240,6 +240,19 @@ while restart: #loop to allow the player can restart the game
 					else:
 						print "'Y' or 'N' please!"
 
+			elif playerChoice == 'HELP':
+				print """
+>>> 'F'			---->	Flips a card in your deck.
+>>> 'D'			---->	Draws a card from the main deck.
+>>> 'E'			---->	Exits from the game.
+>>> 'DECK'		---->	Shows all cards in the main deck.
+>>> 'PDECK'		---->	Shows all cards in the player's deck.
+>>> 'CDECK'		---->	Shows all cards in the cpu's deck.
+>>> 'PDISP'		---->	Shows all cards in the player's hand.
+>>> 'CDISP'		---->	Shows all cards in the cpu's hand.
+>>> 'ADD'		---->	Adds a specified
+				"""
+
 			#Cheat codes for debugging
 			elif playerChoice == 'DECK':
 				print ">>>", Deck
@@ -251,25 +264,30 @@ while restart: #loop to allow the player can restart the game
 				print ">>>", playerDisplayed
 			elif playerChoice == 'CDISP':
 				print ">>>", cpuDisplayed
+
 			elif playerChoice == 'ADD':
-				choice = raw_input(">>> Enter the card to add: ")
-				if choice in Deck:
+				choice = [raw_input(">>> Enter the card to add(Example: hearts, 3): ")]
+				tempHand = choice.split()
+				if choice in str(Deck):
 					playerDisplayed += [choice]
 					Deck.remove(choice)
-				elif choice not in Deck:
+				elif choice not in str(Deck):
 					print "Could not find" + choice + "in Deck."
+			
 			elif playerChoice == 'TURNRESET':
 				print ">>> Resetting turns",
 				time.sleep(.33);print ".",
 				time.sleep(.33);print ".",
 				time.sleep(.33);print ".",;time.sleep(.33)
 				playerNumTurn, cpuNumTurn = 5, 5 #resets player/cpu turns to 5
+			
 			elif playerChoice == 'TRACE':
 				print ">>> Beginning Debug Traceback",
 				time.sleep(.33);print ".",
 				time.sleep(.33);print ".",
 				time.sleep(.33);print ".",;time.sleep(.33)
 				pdb.set_trace() #begins traceback
+			
 			else:
 				print "Please choose an item from the list!\n"
 
