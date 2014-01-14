@@ -115,13 +115,6 @@ def flipper(deck, message): #flips card in player hand
 
 	return [[tempHand], deck] #returns two values. use arrays to get correct values with tempGrab[]
 
-def WMulti(score):
-	#X2Multiplier Wild Card
-	#'score' is playerScore or cpuScore
-	print 'X2Multiplier'
-	score = score * 2
-	return score
-
 def WMS(score):
 	#MasterSpark Wild Card
 	#removes 10 from other player's score
@@ -192,8 +185,13 @@ while restart: #loop to allow the player can restart the game
 		while flipcheck < 5: #calculates player and cpu scores
 			#breaks out of loop if it catches an IndexError 5 times
 			try:
-				playerScore = sum(map(lambda x: x[1], playerDisplayed))
-				cpuScore = sum(map(lambda x: x[1], cpuDisplayed))
+				if 'X2Multiplier' in playerDisplayed:
+					playerScore = (sum(map(lambda x: x[1], playerDisplayed))) * 2
+				elif 'X2Multiplier' in cpuDisplayed:
+					cpuScore = (sum(map(lambda x: x[1], cpuDisplayed))) * 2
+				else:
+					playerScore = sum(map(lambda x: x[1], playerDisplayed))
+					cpuScore = sum(map(lambda x: x[1], cpuDisplayed))
 
 				flipcheck = 6
 
@@ -260,7 +258,12 @@ while restart: #loop to allow the player can restart the game
 					Deck.remove(choice)
 				elif choice not in Deck:
 					print "Could not find" + choice + "in Deck."
-
+			elif playerChoice == 'TurnReset':
+				print ">>>Resetting turns",
+				time.sleep(.33);print ".",
+				time.sleep(.33);print ".",
+				time.sleep(.33);print ".",;time.sleep(.33)
+				playerNumTurn, cpuNumTurn = 5, 5
 			else:
 				print "Please choose an item from the list!\n"
 
