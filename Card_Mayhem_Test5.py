@@ -110,17 +110,18 @@ def flipper(deck, message): #flips card in player hand
 		print "The card was a " + str(tempHand[1]) + " of " + str(tempHand[0]) + "!\n"
 
 	else:
-		print "The card was the" + tempHand + " wild card!"
+		print "The card was the " + tempHand + " wild card!"
+
+		if tempHand == 'MasterSpark': #MasterSpark Wild Card
+			if deck == playerDeck:
+				playerScore -= 10
+				print 'MasterSpark!'
+			elif deck == cpuDeck:
+				playerScore -= 10
+				print 'MasterSpark!'
 
 
 	return [[tempHand], deck] #returns two values. use arrays to get correct values with tempGrab[]
-
-def WMS(score):
-	#MasterSpark Wild Card
-	#removes 10 from other player's score
-	print 'MasterSpark'
-	score -= 10
-	return score
 
 def AT11(deck):
 	#AceTo11 Wild Card
@@ -198,6 +199,12 @@ while restart: #loop to allow the player can restart the game
 			except(IndexError):
 				flipcheck += 1
 
+		if 'DeckSwap' in cpuDeck:
+			cpuDeck.remove('DeckSwap')
+			tempGrab = flipper(Deck, '')
+			cpuDeck += tempGrab[0]
+			Deck = tempGrab[1]
+
 		while playerTurn:
 			print "Your score is", str(playerScore), "and the other player's score is", str(cpuScore), "."
 			print "You have", len(playerDeck), "cards unflipped, and", len(playerDisplayed), "cards flipped."
@@ -250,7 +257,9 @@ while restart: #loop to allow the player can restart the game
 >>> 'CDECK'		---->	Shows all cards in the cpu's deck.
 >>> 'PDISP'		---->	Shows all cards in the player's hand.
 >>> 'CDISP'		---->	Shows all cards in the cpu's hand.
->>> 'ADD'		---->	Adds a specified
+>>> 'ADD'		---->	Adds a specified card.
+>>> 'TURNRESET'	---->	Resets player and cpu turns. Has the same effect of restarting the game
+>>> 'TRACE'		---->	Actiivates pdb debugging traceback.
 				"""
 
 			#Cheat codes for debugging
