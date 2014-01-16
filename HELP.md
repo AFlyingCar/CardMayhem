@@ -27,7 +27,7 @@ Card Mayhem is a card game that uses a series of wild (or specialized) cards as 
 >>> DeckSwap		---->		Allows the player to swap their deck with the cpu, or to grab 5 new cards from 
 												the main Deck. If the player decides to grab 5 new cards from the main Deck,
 												then their current deck will be put at the bottom of the main Deck. This cannot
-												be reversed.
+												be reversed. This is the only Wild Card which cannot be used by the CPU.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Face Card Values<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
