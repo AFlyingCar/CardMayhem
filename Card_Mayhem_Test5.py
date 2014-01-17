@@ -227,23 +227,29 @@ while restart: #loop to allow the player can restart the game
 				help = open("HELP.md", "r")
 				print(help.read())
 				help.close()
-				help = raw_input("Press 1 to show additional commands, and 2 to return to the game: ")
+				help = raw_input("Press 1 to show commands, and any key to return to the game: ")
 
-				if help == 1:
+				if help == '1':
 					print """
 >>> 'F'			---->	Flips a card in your deck.
 >>> 'D'			---->	Draws a card from the main deck.
 >>> 'E'			---->	Exits from the game.
+>>> 'HELP'		---->	Displays information about the game, as well as debugging commands.
+				"""
+					help = raw_input("Press 1 to show additional commands and 2 to continue with the game: ")
+
+					if help == '1':
+						print """
 >>> 'DECK'		---->	Shows all cards in the main deck.
 >>> 'PDECK'		---->	Shows all cards in the player's deck.
 >>> 'CDECK'		---->	Shows all cards in the cpu's deck.
 >>> 'PDISP'		---->	Shows all cards in the player's hand.
 >>> 'CDISP'		---->	Shows all cards in the cpu's hand.
 >>> 'ADD'		---->	Adds a specified card.
->>> 'TURNRESET'		---->	Resets player and cpu turns. Has the same effect of restarting the game
+>>> 'TURNRESET' 	---->	Resets player and cpu turns. Has the same effect of restarting the game
 >>> 'TRACE'		---->	Actiivates the pdb debugging traceback.
-				"""
-					raw_input("Press any key to continue: ")
+"""
+						raw_input("Press any key to continue: ")
 
 			#Cheat codes for debugging
 			elif playerChoice == 'DECK':
