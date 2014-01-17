@@ -1,3 +1,4 @@
+
 CardMayhem
 ==========
 Card Mayhem is a card game that uses a series of wild (or specialized) cards as well as the default deck of 52. 
@@ -16,25 +17,24 @@ Card Mayhem is a card game that uses a series of wild (or specialized) cards as 
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Current Wild Cards<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
->>> X2Multiplier ---->	Multiplies all card values the user recieves by two. This is the only card that
-												works continuously after use. However, it does not go back into the deck after
-												use.
+>>> X2Multiplier ---->	Multiplies all card values the user recieves by two. This is the only card that works
+			continuously after use. However, it does not go back into the deck after use.
 
->>> MasterSpark	---->		Subtracts 10 points from the opposing player's score.
+>>> MasterSpark	---->	Subtracts 10 points from the opposing player's score.
 
->>> AceTo11	  	---->		Changes the values of all ace cards in the player's hand to eleven.
+>>> AceTo11	---->	Changes the values of all ace cards in the player's hand to eleven.
 
->>> DeckSwap		---->		Allows the player to swap their deck with the cpu, or to grab 5 new cards from 
-												the main Deck. If the player decides to grab 5 new cards from the main Deck,
-												then their current deck will be put at the bottom of the main Deck. This cannot
-												be reversed. This is the only Wild Card which cannot be used by the CPU.
+>>> DeckSwap	---->	Allows the player to swap their deck with the cpu, or to grab 5 new cards from 
+			the main Deck. If the player decides to grab 5 new cards from the main Deck, then 
+			their current deck will be put at the bottom of the main Deck. This cannot be 
+			reversed and is the only wild card which cannot be used by the CPU.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Face Card Values<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
->>> Ace			---->	Worth one point.
+>>> Ace		---->	Worth one point.
 
->>> Jack		---->	Worth eleven points.
+>>> Jack	---->	Worth eleven points.
 
->>> Queen		---->	Worth twelve points.
+>>> Queen	---->	Worth twelve points.
 
->>> King		---->	Worth thirteen points.
+>>> King	---->	Worth thirteen points.
