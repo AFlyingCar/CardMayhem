@@ -325,7 +325,7 @@ while restart: #loop to allow the player can restart the game
 			if cpuChoice == 1: #If cpu decides to flip a card
 				tempGrab = flipper(cpuDeck, 'Flipping card')
 				cpuDeck = tempGrab[1]
-				cpuDisplayed = tempGrab[0]
+				cpuDisplayed += tempGrab[0]
 				cpuNumTurn -= 1
 				cpuTurn = False
 				playerTurn = True
