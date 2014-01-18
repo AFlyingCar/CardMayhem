@@ -172,6 +172,7 @@ while restart: #loop to allow the player can restart the game
 		deckTop = Deck[0]
 
 		if 'DeckSwap' in cpuDeck: #Remove the DeckSwap WildCard from the cpuDeck
+			print cpuDeck
 			cpuDeck.remove('DeckSwap') #CPU not smart enough to properly use it
 			tempGrab = flipper(Deck, '')
 			cpuDeck.append(tempGrab[0])
@@ -260,26 +261,36 @@ while restart: #loop to allow the player can restart the game
 				print ">>>", cpuDisplayed
 
 			elif playerChoice == 'ADD':
-				choice = [raw_input(">>> Enter the card to add(Example: hearts, 3): ")]
-				tempHand = choice.split()
+				choice = raw_input(">>> Enter the card to add(Example: hearts, 3): ")
+				
+				if ", " in choice:
+					tempHand = choice.split(",")
+				else:
+					print "Please add a comma in between the Suit and the value."
+			
+				print tempHand
+				num = int(choice[len(choice)-1]) #get number in string
+				tempHand[1] = num
+	
 				if choice in str(Deck):
 					playerDisplayed.append(choice)
 					Deck.remove(choice)
 				elif choice not in str(Deck):
-					print "Could not find" + choice + "in Deck."
+					print "Could not find " + choice + " in Deck."
 			
 			elif playerChoice == 'TURNRESET':
 				print ">>> Resetting turns",
 				time.sleep(.33);print ".",
 				time.sleep(.33);print ".",
-				time.sleep(.33);print ".",;time.sleep(.33)
+				time.sleep(.33);print ".",
 				playerNumTurn, cpuNumTurn = 5, 5 #resets player/cpu turns to 5
 			
 			elif playerChoice == 'TRACE':
 				print ">>> Beginning Debug Traceback",
 				time.sleep(.33);print ".",
 				time.sleep(.33);print ".",
-				time.sleep(.33);print ".",;time.sleep(.33)
+				time.sleep(.33);print ".",
+				time.sleep(.33)
 				pdb.set_trace() #begins traceback
 			
 			else:
@@ -300,7 +311,7 @@ while restart: #loop to allow the player can restart the game
 			if cpuChoice == 1: #If cpu decides to flip a card
 				tempGrab = flipper(cpuDeck, 'Flipping card')
 				cpuDeck = tempGrab[1]
-				cpuDisplayed = tempGrab[0]
+				cpuDisplayed.append(tempGrab[0])
 				cpuNumTurn -= 1
 				cpuTurn = False
 				playerTurn = True
@@ -322,7 +333,6 @@ while restart: #loop to allow the player can restart the game
 					cpuScore = (sum(map(lambda x: x[1], cpuDisplayed))) * 2
 				else:
 					playerScore = sum(map(lambda x: x[1], playerDisplayed))
-					
 					cpuScore = sum(map(lambda x: x[1], cpuDisplayed))
 
 				flipcheck = 6
