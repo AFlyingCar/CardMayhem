@@ -153,8 +153,6 @@ def DeSw(deck):
 			Deck.append(tempDeck)
 			random.shuffle(Deck)
 			
-			return deck
-
 while restart: #loop to allow the player can restart the game
 	playerTurn, cpuTurn = True, True
 	playerNumTurn, cpuNumTurn = 5, 5
@@ -166,7 +164,6 @@ while restart: #loop to allow the player can restart the game
 	cpuDisplayed = []
 
 	Deck = shuffle()
-	print Deck
 	playerDeck = deck_maker(5, 'Building Player/CPU Decks\n')
 	cpuDeck = deck_maker(5, '',)
 
@@ -192,7 +189,6 @@ while restart: #loop to allow the player can restart the game
 				tempGrab = flipper(playerDeck, 'Flipping card')
 				playerDeck = tempGrab[1]
 				playerDisplayed.append(tempGrab[0])
-				print playerDisplayed
 				playerNumTurn -= 1
 				playerTurn = False
 				cpuTurn = True
